@@ -1,0 +1,5 @@
+.RData
+*.csv
+.Rhistory
+*.Rproj*
+rsconn*
