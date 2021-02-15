@@ -4,3 +4,6 @@
 *.Rproj*
 rsconn*
 .Rproj.user
+vignettes/*.html
+tcx_package.zip
+tcx_package-*/

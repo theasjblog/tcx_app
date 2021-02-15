@@ -1,25 +1,27 @@
+# load dependencies
+source('dependencies.R')
+# source supporting functions. These should be an independent package
+for (i in list.files('./auxFunctions')) {
+  source(paste0('./auxFunctions/', i))
+}
 
 # This is the user-interface definition of a Shiny web application.
 # You can find out more about building applications with Shiny here:
 #
 # http://shiny.rstudio.com
 #
-library(tcxAnalyser)
-library(leaflet)
-library(data.table)
-
 shinyUI(fluidPage(
   mainPanel(
-            #tabsetPanel(
-              #tabPanel("Main",
+            tabsetPanel(
+              tabPanel("Main",
                        fluidRow(
                          
                          column(6,
                                 wellPanel(
                                   fileInput('file1', 'Choose TCX File',
                                           accept = ".tcx"),
-                                  p("If you do not have a Garmin tcx file, you can get one",
-                                    tags$a(href = "https://drive.google.com/open?id=11a2CRUgOvp045BBj1V1LO5P6FWj2aqe_", "from here",
+                                  p("If you do not have a Garmin tcx file, you can download one",
+                                    tags$a(href = "https://drive.google.com/drive/folders/1m-nQ3mfDI0oM0KwITwsNWkTUYVqpIcGy?usp=sharing", " here",
                                            target = "_blank")),
                                   uiOutput("ftpUI")
                                   )
@@ -124,5 +126,8 @@ shinyUI(fluidPage(
             #           
             #           )
             #)
-            )
-  ))
+            ),
+            tabPanel('About',
+                     includeMarkdown('vignettes/about.md'))
+  )
+  )))
